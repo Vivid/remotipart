@@ -6,7 +6,9 @@ module Remotipart
 
     def self.included(base)
       base.class_eval do
-        alias_method_chain :render, :remotipart
+        # Use neither alias_method_chain nor prepend for compatibility
+        alias render_without_remotipart render
+        alias render render_with_remotipart
       end
     end
 
